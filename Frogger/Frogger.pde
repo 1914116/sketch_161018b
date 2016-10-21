@@ -7,6 +7,15 @@ Car B = new Car(60,-5,30,150);
 Car C = new Car(70,3, 150, 250);
 Car D = new Car(70,-4, 150, 350);
 Car E = new Car(70,-3, 150, 300);
+boolean intersects(Car car) {
+if ((Y > car.getY() && Y < car.getY()+50) && (X > car.getX() && X < car.getX()+car.getSize()))
+          return true;
+    else 
+        return false;
+}
+
+
+
 void setup(){
 size(400,400);
 
@@ -27,8 +36,32 @@ C.moveLeft();
 D.moveLeft();
 E.moveLeft();
 F.moveLeft();
-
+if(intersects(D)){
+  Y=0;
 }
+else if(intersects(A)){
+  Y=0;
+}
+else if(intersects(B)){
+  Y=0;
+}
+else if(intersects(C)){
+  Y=0;
+}
+else if(intersects(E)){
+  Y=0;
+}
+else if(intersects(F)){
+  Y=0;
+}
+if (Y>=400){
+  text( "You Won", 200, 380); 
+  textSize(20); 
+}
+}
+
+
+''
 void keyPressed()
 {
   if(key == CODED){
@@ -62,16 +95,25 @@ class Car{
   {
     fill(0,255,0);
     rect(x,y,size,50);
-  }
+  } vvv                                  bv v bb 
 void moveLeft(){
   x-=speed;
   if(x<=0){
-    speed = -speed;
+   x=400;
   }
     else if(x>=400){
-      speed= -speed;
+      x=0;
+}
+}
+int getX(){
+  return x;
+}
+int getY(){
+  return y;
+}
+int getSize(){
+  return size;
 }
 }
 
-}
 
